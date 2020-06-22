@@ -33,7 +33,7 @@ def run(n, seq, num, trials):
     # count_list = [count_list[i-1] if i not in seq or count_list[i-1] != 0 else seq.count(i) for i in seq]
 
     count_list = [0] * 100000
-    for i in seq:
+    for i in set(seq):
         count_list[i-1] = count_list[i-1] if count_list[i-1] != 0 else seq.count(i)
     
     # count_list = []
