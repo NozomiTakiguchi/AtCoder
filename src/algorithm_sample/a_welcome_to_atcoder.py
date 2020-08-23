@@ -1,7 +1,4 @@
 
-from decorator import trace_perf
-
-@trace_perf
 def run(a, b, c, s):
     '''
     高橋君はデータの加工が行いたいです。
