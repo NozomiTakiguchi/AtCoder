@@ -4,13 +4,17 @@ def run(n, _in_list, k):
     '''
 
     # depth-first search
+    # 途中で目的の値が取得できた時、 true が連鎖的に帰ってきて最終的に本体の関数が true になるような構造
     def dfs(i, sum):
-
+        print('i={}'.format(i))
         if i == n:
+            print('i={}, sum={}, first if-statement'.format(i, sum))
             return sum == k
         if dfs(i+1, sum):
+            print('i={}, sum={}, second if-statement'.format(i, sum))
             return True
         if dfs(i+1, sum + _in_list[i]):
+            print('i={}, sum={}, third if-statement'.format(i, sum))
             return True
         return False
     
