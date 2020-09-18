@@ -1,20 +1,22 @@
-def run(n, _in_list, k):
+def run(max_num, _in_list, target_value):
     '''
-    部分和問題. 深さ優先探索はその性質上、再帰処理で簡単に書くことができるらしい. TODO アルゴリズム理解.
+    [問題] 
+    整数が n 個与えられます。その中からいくつか選び、その和をちょうど k にすることができるかを判定してください。
+    =====
+    → 部分和問題. 深さ優先探索はその性質上、再帰処理で簡単に書くことができるらしい. TODO アルゴリズム理解.
     '''
 
     # depth-first search
     # 途中で目的の値が取得できた時、 true が連鎖的に帰ってきて最終的に本体の関数が true になるような構造
-    def dfs(i, sum):
-        print('i={}'.format(i))
-        if i == n:
-            print('i={}, sum={}, first if-statement'.format(i, sum))
-            return sum == k
-        if dfs(i+1, sum):
-            print('i={}, sum={}, second if-statement'.format(i, sum))
+    def dfs(i, current_sum):
+        if i == max_num: 
+            print('1st if-statement. i = {}. sum = {}'.format(i, current_sum))
+            return current_sum == target_value # 渡されたインプットを全て使い、目的の値を構成することができるか否かを判断
+        if dfs(i+1, current_sum):
+            print('2nd if-statement. i = {}. sum = {}'.format(i, current_sum))
             return True
-        if dfs(i+1, sum + _in_list[i]):
-            print('i={}, sum={}, third if-statement'.format(i, sum))
+        if dfs(i+1, current_sum + _in_list[i]):
+            print('3rd if-statement. i = {}. sum = {}'.format(i, current_sum))
             return True
         return False
     
