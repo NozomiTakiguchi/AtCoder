@@ -3,6 +3,7 @@ def run(n_m, an_bn):
     '''
     ACL beginner contest C
     Union-Find 木 というのを使って連結成分を取得すれば、連結成分 - 1 が答えになる（らしい）
+    また、この問題では dfs も使えるらしい
 
     '''
     all_cities = [i+1 for i in range(n_m[0])]
