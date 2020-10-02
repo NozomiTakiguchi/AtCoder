@@ -20,3 +20,7 @@
  - シェルには docker が起動していて、そこで実行できる
  - ホスト側のディレクトリをマウントし、全体を git 管理してデスクトップでもノート PC でも同じように開発できる
  - スピーディーに build できる
+
+#### やり方
+ - VSCode で 'remote-container' をインストール
+ - Remote-Containers: Open Folder in Container... を選択
