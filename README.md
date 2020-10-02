@@ -1,4 +1,8 @@
 ## Docker 使って python 環境構築してみる
+#### 前提
+ - windows 環境では GitBash を使用
+ - Mac 環境では標準の terminal を使用
+
 #### docker image をビルド-> コンテナ起動の場合
  ```
  docker build --rm -t sample:0.6 . # ビルド
