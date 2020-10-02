@@ -20,9 +20,7 @@ RUN apt-get update \
     # pip アップデート
     && pip install --upgrade pip
 
-WORKDIR /home/python/modules
 COPY requirement ${PWD}
-
 RUN pip install -r requirement
 
 WORKDIR /home/python/src
