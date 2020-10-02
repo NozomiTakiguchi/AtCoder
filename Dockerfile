@@ -26,5 +26,4 @@ COPY requirement ${PWD}
 RUN pip install -r requirement
 
 WORKDIR /home/python/src
-COPY src/ ${PWD}
 
