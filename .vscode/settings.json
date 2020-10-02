@@ -1,4 +1,4 @@
 {
     "files.eol": "\n",
-    "python.pythonPath": ".pyenv/bin/python",
+    "python.pythonPath": "/usr/local/bin/python",
 }

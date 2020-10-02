@@ -7,5 +7,5 @@ services:
                         dockerfile: ./Dockerfile
                 image: python_env               
                 volumes:
-                        - $PWD:/home/python
+                        - .:/home/python
                 tty: true                          
