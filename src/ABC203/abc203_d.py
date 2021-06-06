@@ -38,7 +38,6 @@ def run(n, k, _in):
                 s[i+1][j+1] = s[i+1][j] + s[i][j+1] - s[i][j] #最後の -s[i][j] は、重複分を減しているだけ
                 if _in[i][j] > mid:
                     s[i+1][j+1] += 1
-        print(f's is {s} when passed mid is {mid} (ng = {ng} / ok = {ok})')
 
         # k*k の区間の選び方は (n-k+1)*(n-k+1) 通りある
         for i in range(n-k+1):
@@ -46,9 +45,9 @@ def run(n, k, _in):
 
                 # ある k*k 区間で深さが mid 以上のマスの個数が limit 未満であるか否か = その区間の中央値が mid 以上であるか否か
                 # ↑の解釈ちょっとおかしいな。。 例題をインプットとしたとき、例えば mid = 10000 とかだと exist = True になる。。
+
                 if (s[i+k][j+k] + s[i][j] - s[i][j+k] - s[i+k][j] < limit): # ここの左辺って 0 にはならないのか。。
                     exist = True
-        print(f'exist flag is {exist}')
         if exist:
             # 右終端を今回の mid に設定し、それより小さい中央値が存在するかどうかを次ループで検証する
             ok = mid
