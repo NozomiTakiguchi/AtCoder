@@ -9,7 +9,7 @@ def dfs(start_point: int, mapping: list, _result: list, avoid_duplicate=True):
 
     Args:
         start_point (int): 経路を検証したい頂点. 
-        mapping (list): 頂点と,その隣接する頂点のリスト. それぞれインデックスが要素として入っている (頂点 2 と隣接する頂点が 4 のとき、リストには [[..], [3], [..],[..]] と入っている)
+        mapping (list): 頂点と,その隣接する頂点のリスト. それぞれインデックスを要素として入れる (頂点 2 と隣接する頂点が 4 のとき、リストには [[..], [3], [..],[..]] とする)
         _result (list): 初期値は [False] * 頂点数のリスト. 再帰的に参照する.
         avoid_duplicate (bool, optional): 同じ頂点を二度以上調べたい場合は False. たぶん False にすることはない.
     """
@@ -24,7 +24,7 @@ def dfs(start_point: int, mapping: list, _result: list, avoid_duplicate=True):
 
 def run(n, m):
     _l = [[] for _ in range(n)]
-    # _l[i] は、都市 i から道路で直接つながっている都市のリスト 
+    # _l[i] は、都市 i+1 から道路で直接つながっている都市の「インデックス」のリスト 
     for _ in range(m):
         a, b = map(int, input().split())
         _l[a-1].append(b-1)
@@ -37,7 +37,6 @@ def run(n, m):
         # print(f'city {i+1} is connected to {result}')
         ans += sum(result)
     print(ans)
-
 
 
 if __name__ == '__main__':
