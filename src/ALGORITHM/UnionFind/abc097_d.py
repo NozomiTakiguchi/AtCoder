@@ -6,6 +6,7 @@ _i = lambda: map(int, input().split())
 p = lambda: list(map(int, input().split()))
 
 
+# https://qiita.com/DancingEnginee1/items/957e536e5f076e98d5ec
 class UnionFind():
     def __init__(self, n):
         self.parent = [-1 for _ in range(n)]
@@ -76,7 +77,7 @@ class UnionFind():
             y (int): 要素
 
         Returns:
-            [type]: [description]
+            [bool]: 同じ木構造に属するなら True
         """
         return self.find(x) == self.find(y)
 
@@ -91,18 +92,19 @@ def run():
     for i in range(m):
         p1, p2 = _i()
         # インデックスを渡したいのでそれぞれ -1 
+        # 経路圧縮 (根を繋ぎ変えることで木構造をフラットに保つ) して根を更新
         uf.unite(p1-1, p2-1)
 
     for i in range(n):
-        # 経路圧縮して根を更新
         uf.find(i)
     
     for i in range(n):
         if pn[i] == i+1:
             cnt += 1
         else:
-            # index[i] と index[pn[i]] が同じグループならカウント
-            if uf.equiv(pn[i]-1, pn[pn[i]-1]-1):
+            # ↓ コメントアウトしているやり方でもイケるが直観的でない
+            # if uf.equiv(pn[i]-1, pn[pn[i]-1]-1):
+            if uf.equiv(i, pn[i]-1):
                 cnt += 1
             else:
                 continue
