@@ -1,27 +1,20 @@
-ni = lambda: int(_i())
-il = lambda: list(map(int, _i().split()))
+_n = lambda: int(_i())
+_nl = lambda: list(map(int, _i().split()))
 _i = lambda: input()
 
-# dp は逆算の考え方が大事 ??
-# → 後のことも考えて今とるアクションを考慮する必要があるから
-
 def run():
-    n = ni()
+    n = _n()
+    dp = [[0]*(3) for _ in range(n+1)] # dp[i][j] := i-1 日目に選択肢 j をとったときにとりうる最大の幸福度
+
     l = []
     for _ in range(n):
-        l.append(il())
-    
-    dp = [0 for _ in range(n+1)]
+        l.append(_nl())
 
-    prev = 0
     for i in range(n):
-        if i == 0:
-            cnddt = [(e,i) for i,e in enumerate(l[i])]
-        else:
-            cnddt = [(e,i) for i,e in enumerate(l[i]) if i != prev]
-        amt, prev = max(cnddt, key=lambda x: x[0])
-        dp[i+1] = dp[i] + amt
-    print(dp[n])
+        for j in range(3): # 0: 選択肢 a / 1: 選択肢 b / 2: 選択肢 c
+            dp[i+1][j] = max([dp[i][k] + l[i][j] for k in range(3) if j != k]) # 同じ選択肢を 2 日連続でとれないため
+    
+    print(max(dp[n]))
 
 
 if __name__ == '__main__':
