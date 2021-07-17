@@ -8,13 +8,13 @@ _n = lambda: int(_i())
 _nl = lambda: list(map(int, _i().split()))
 _i = lambda: input()
 
-DIVISOR = (10**9)+7
+MOD = (10**9)+7
 
 def run():
     n = _n()
     a = _nl()
 
-    dp = [[] ]
+    dp = [[0]*(n+1) for _ in range(n+1)] # dp[i][j] : 先頭からインデックス i-1 番目の数までで条件に合うように j 組作ったときの組み合わせ？
 
 if __name__ == '__main__':
     run()
