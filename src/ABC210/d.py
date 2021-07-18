@@ -1,3 +1,7 @@
+'''
+DP 使って解く.
+i 番目の状況と i+1 番目の状況を比較する。 i 番目にいる時にコストが最小か最大か、みたいなことを考えたら DP が使えそう、と判断できるかも
+'''
 _n = lambda: int(_i())
 _l = lambda: list(map(int, _i().split()))
 _i = lambda: input()
