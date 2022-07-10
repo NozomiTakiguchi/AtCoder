@@ -1,31 +1,40 @@
+'''
+解説読んでも訳が分からない。
+スワップ系の問題は剰余使ったらうまくいきそう、ってことだけ暗記してしまったほうがよさそう
+'''
 
 def run(n,k,a):
+    b = [[] for i in range(k)] # 剰余が一致するところはスワップできる
 
-    prev_forth, prev_back = 0,0
-
+    # スワップできる要素をそれぞれのリストに加える
     for i in range(n):
-        _f,_b = a[i], a[i+k]
+        idx = i%k # 余りは 0 <= idx <= k-1 のいずれか = b の要素数と一致
+        b[idx].append(a[i])
 
-        print(_f,_b)
-        if _f >= _b:
-            _f,_b = _b,_f
-            a[i+k] =  _b
+    l_sorted = []
+    # わざわざ自作でマージソートする必要ない
+    # スワップできる要素でまとめられた各リストをソートする
+    for e in b:
+         l_sorted.append(sorted(e))
+    
 
-        if prev_forth > _f or prev_back > _b:
-            print(i,_f,_b, prev_forth, prev_back)
+    l = []
+    # 元に戻す (厳密には、スワップできる要素がもともといた位置に、要素をソートしたうえではめ込む)
+    for i in range(n):
+        q,mod = divmod(i,k) # 商と余り
+        l.append(l_sorted[mod][q])
 
-            print('No')
-            exit()
-
-        prev_forth, prev_back = _f,_b
-
-    print('Yes')
-
-'''
-1: f,b -> 1,3
-2: f,b -> 3,4
-3: f,b -> 3,4
-'''
+    asc = True
+    # 昇順になっていれば OK
+    for i in range(len(l)-1):
+        if l[i] <= l[i+1]:
+            continue
+        else:
+            asc = False
+            break
+    
+    print('Yes') if asc else print('No')
+    exit()
 
 
 if __name__ == '__main__':
