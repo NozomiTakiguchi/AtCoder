@@ -10,7 +10,7 @@ class Node:
         self.memo = [] # 親ノードのリスト
     
     def __repr__(self) -> str:
-        return f'Node {self.index} : toporo {self.toporo} : memo {self.memo}'
+        return f'[Node {self.index} : toporo: {self.toporo}]'
 
 
 # def run(n,m):
@@ -21,6 +21,8 @@ def run():
     nodes = []
     for i in range(n+1):
         nodes.append(Node(i))
+    
+    print(nodes)
     
     for _ in range(m):
         s,d = map(int, input().split())
@@ -33,6 +35,8 @@ def run():
     for node in nodes:
         if len(node.parents) == 0:
             queue.append(node)
+    
+    print(queue)
     
     # トポロジカル順序を初期化
     order = 1
@@ -48,10 +52,9 @@ def run():
         
             if len(nodes[child].parents) == 0:
                 queue.append(nodes[child])
+    print(nodes)
     # Node 0 が toporo 順序の最大値 (入力例 1 なら Node 0 が toporo 5 になる) になるので、Node 0 を消す → LIFO だから Node 0 が最後まで残るから order が最大になる
     toporo_nodes = sorted(nodes, key=lambda x: x.toporo)[: -1]
-
-    print(f'toporo: {toporo_nodes}')
 
     # dp[i+1]:  トポロジカル順序 i の Node まで調べた時、その Node を徹最長経路
     dp = [0] * (n)
