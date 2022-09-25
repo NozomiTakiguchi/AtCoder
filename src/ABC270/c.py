@@ -1,3 +1,4 @@
+# Pypy じゃなくて Python3.8.2 にしたら AC した。。。
 import sys
 sys.setrecursionlimit(10**9)
  
@@ -22,11 +23,12 @@ def run(n,x,y,uv):
 
     # dfs すると TLE 数問と WA 数問、、、 WA に関しては何でかよくわからん
     # → parents と children みたいにしてたからおかしくなってたっぽい... TLE は変わらんけど WA はなくなった
-    dfs(nodes, y, n)
-    ans.append(x)
+    if dfs(nodes, y, n):
+        ans.append(x)
     ans.reverse()
  
-    print(' '.join(map(str, ans)))
+    # print(' '.join(map(str, ans)))
+    print(*ans)
 
 
 ans = []
