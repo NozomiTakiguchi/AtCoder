@@ -8,6 +8,7 @@
 ## DP
 * ABC267 - [D](https://atcoder.jp/contests/abc267/tasks/abc267_d)
 * ABC270 - [D](https://atcoder.jp/contests/abc270/tasks/abc270_d)
+* ABC271 - [D](https://atcoder.jp/contests/abc271/tasks/abc271_d) #DP 復元の問題
 
 ## bit 全探索
 * ABC269 - [C](https://atcoder.jp/contests/abc269/tasks/abc269_c)
