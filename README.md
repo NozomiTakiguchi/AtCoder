@@ -14,3 +14,6 @@
 
 ## bit 全探索
 * ABC269 - [C](https://atcoder.jp/contests/abc269/tasks/abc269_c)
+
+## 全然わからない
+* ARC150 - [A](https://atcoder.jp/contests/arc150/tasks/arc150_a)
